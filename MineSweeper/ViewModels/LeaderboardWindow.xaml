@@ -1,0 +1,14 @@
+﻿<Window x:Class="Minesweeper.LeaderboardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Leaderboard" Height="400" Width="400" WindowStartupLocation="CenterScreen" Background="LightGray">
+    <Grid Margin="10">
+        <DataGrid x:Name="LeaderboardGrid" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserAddRows="False"
+                  IsReadOnly="True" GridLinesVisibility="Horizontal" Background="White">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Név" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Idő (másodperc)" Binding="{Binding Time}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

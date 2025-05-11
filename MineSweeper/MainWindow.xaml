@@ -1,0 +1,125 @@
+﻿<Window x:Class="Minesweeper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Minesweeper" Height="600" Width="800" Background="LightGray" WindowStartupLocation="CenterScreen">
+    <Grid Name="MainGrid">
+
+    <!-- Start menü -->
+    <Grid x:Name="StartMenu" Visibility="Visible" Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <TextBlock Text="Welcome to Minesweeper!" 
+                       FontSize="28" 
+                       FontWeight="Bold" 
+                       Margin="0,0,0,20" 
+                       HorizontalAlignment="Center" />
+
+            <!-- Új játék gomb -->
+            <Button Content="Start New Game" 
+                    Click="StartNewGame_Click" 
+                    Width="200" 
+                    Height="50" 
+                    Margin="0,10"
+                    HorizontalAlignment="Center">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="DarkGray"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="2" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="10">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Gray"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Leaderboard gomb -->
+            <Button Content="Leaderboard" 
+                    Click="Leaderboard_Click" 
+                    Width="200" 
+                    Height="50" 
+                    Margin="0,10"
+                    HorizontalAlignment="Center">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="DarkGray"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="2" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="10">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Gray"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+        </StackPanel>
+    </Grid>
+
+    <!-- Játék felület -->
+    <Grid x:Name="GameArea" Visibility="Collapsed" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/> <!-- Timer -->
+            <RowDefinition Height="*"/>    <!-- Game Grid -->
+        </Grid.RowDefinitions>
+
+        <!-- Timer -->
+        <Border Name="TimerBorder" Grid.Row="0" Background="#6000a2" Margin="5" BorderBrush="White" BorderThickness="2"
+                HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="50" Visibility="Collapsed">
+            <TextBlock Name="TimeDisplay" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" 
+                       FontWeight="Bold" Foreground="White" Text="Idő: 0"/>
+        </Border>
+        
+        <TextBlock Name="MineCounterDisplay" HorizontalAlignment="Center" FontSize="20"
+                   FontWeight="Bold" Foreground="Black" Text="Aknák: 0 | Megjelölve: 0" Grid.Row="1"/>
+
+        <!-- Game Grid -->
+        <Grid x:Name="GameGrid" Grid.Row="2" Background="Gray" Margin="40" />
+    </Grid>
+
+</Grid>
+</Window>

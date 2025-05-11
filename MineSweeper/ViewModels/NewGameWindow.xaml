@@ -1,0 +1,66 @@
+﻿<Window x:Class="Minesweeper.NewGameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="New Game Settings" Height="350" Width="400" Background="LightGray" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="250">
+
+            <TextBlock Text="New Game Settings" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       HorizontalAlignment="Center" 
+                       Margin="0,0,0,20" />
+
+            <TextBlock Text="Rows:" Margin="0,5,0,5"/>
+            <TextBox x:Name="RowsInput" Height="30" Background="White" BorderBrush="Gray" BorderThickness="1" Padding="5"/>
+
+            <TextBlock Text="Columns:" Margin="0,10,0,5"/>
+            <TextBox x:Name="ColumnsInput" Height="30" Background="White" BorderBrush="Gray" BorderThickness="1" Padding="5"/>
+
+            <TextBlock Text="Mines:" Margin="0,10,0,5"/>
+            <TextBox x:Name="MinesInput" Height="30" Background="White" BorderBrush="Gray" BorderThickness="1" Padding="5"/>
+
+            <Button Content="Start" 
+                    Click="Start_Click" 
+                    Width="150" 
+                    Height="40" 
+                    Margin="0,20,0,0"
+                    HorizontalAlignment="Center">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="DarkGray"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="2" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="10">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Gray"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+        </StackPanel>
+    </Grid>
+</Window>
